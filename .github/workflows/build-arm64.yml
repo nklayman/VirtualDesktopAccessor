@@ -17,11 +17,13 @@ jobs:
         with:
           targets: aarch64-pc-windows-msvc
 
+      # The --workspace flag ensures the 'dll' sub-project is compiled
       - name: Build ARM64 target
-        run: cargo build --release --target aarch64-pc-windows-msvc
+        run: cargo build --release --workspace --target aarch64-pc-windows-msvc
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: VirtualDesktopAccessor-ARM64
+          # Grab any DLL outputted into the release folder
           path: target/aarch64-pc-windows-msvc/release/*.dll
