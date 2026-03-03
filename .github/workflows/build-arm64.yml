@@ -17,7 +17,7 @@ jobs:
 
       # The --workspace flag ensures the 'dll' sub-project is compiled
       - name: Build x64 target
-        run: cargo build --release --workspace --target x86_64-pc-windows-msv
+        run: cargo build --release --workspace --target x86_64-pc-windows-msvc
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
