@@ -14,16 +14,14 @@ jobs:
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: aarch64-pc-windows-msvc
 
       # The --workspace flag ensures the 'dll' sub-project is compiled
-      - name: Build ARM64 target
-        run: cargo build --release --workspace --target aarch64-pc-windows-msvc
+      - name: Build x64 target
+        run: cargo build --release --workspace --target x86_64-pc-windows-msv
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: VirtualDesktopAccessor-ARM64
+          name: VirtualDesktopAccessor-x64
           # Grab any DLL outputted into the release folder
-          path: target/aarch64-pc-windows-msvc/release/*.dll
+          path: target/x86_64-pc-windows-msvc/release/*.dll
